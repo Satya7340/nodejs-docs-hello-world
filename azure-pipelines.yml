@@ -15,10 +15,23 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+- task: Npm@1
+  displayName: restore
+  inputs:
+    command: 'custom'
+    customCommand: 'run restore'
+  
+- task: Npm@1
+  displayName: run install
+  inputs:
+    command: 'custom'
+    customCommand: 'run install'
+
+- task: Npm@1
+  displayName: build
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
 
 - task: PublishBuildArtifacts@1
   displayName: publish
