@@ -14,12 +14,6 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-
-- task: Npm@1
-  displayName: restore
-  inputs:
-    command: 'custom'
-    customCommand: 'run restore'
   
 - task: Npm@1
   displayName: run install
